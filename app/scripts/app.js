@@ -29,6 +29,16 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/addpost', {
+        templateUrl: 'views/addpost.html',
+        controller: 'AddpostCtrl',
+        controllerAs: 'addpost'
+      })
+      .when('/viewpost', {
+        templateUrl: 'views/viewpost.html',
+        controller: 'ViewpostCtrl',
+        controllerAs: 'viewpost'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -1,13 +1,39 @@
-<div class="col-md-12">
-    <div ng-repeat="post in posts" class="col-sm-6 col-md-3" >
-    <div class="thumbnail" style="width: 190px; height: 300px;">
-      <div class="caption">
-        <h3>{{post.title}}</h3>
-        <p>{{post.body |  limitTo : 60}}{{post.body.length > 60 ? '...' : ''}}</p>
-      </div>
+<div class="row">
+    <div class="col-md-4">
+        <form 
+            name="searchForm" 
+            ng-submit="submitForm(searchForm.$valid)" novalidate>
+
+            <!-- USERNAME -->
+            <div class="form-group" 
+                 ng-class="{ 'has-error' : searchForm.search.$invalid && !searchForm.search.$pristine }">
+                <label>Wyszukiwanie</label>
+                <input type="text" name="search" class="form-control" ng-model="search" ng-minlength="3">
+                <p ng-show="searchForm.search.$error.minlength" class="help-block">Fraza za krótka.</p>
+
+            </div>
+
+        </form>
     </div>
-  </div>
-</div>    
+    <div class="col-md-8">    
+        <a href="#/addpost" class="btn btn-primary pull-right">
+            Dodaj post
+        </a>
+    </div>    
+
+</div>
+<br>
+<div class="row">
+    <div ng-repeat="post in posts | filter : {title : search}" class="col-sm-6 col-md-3" >
+        <div class="thumbnail" style="width: 190px; height: 300px;">
+            <div class="caption">
+                <h3>{{post.title}}</h3>
+                <p>{{post.body|  limitTo : 60}}{{post.body.length > 60 ? '...' : ''}}</p>
+            </div>
+        </div>
+    </div>
+</div> 
+</div>
 <pre>
-  {{posts | json}}    
+  {{posts| json}}    
 </pre>
