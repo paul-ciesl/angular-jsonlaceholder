@@ -40,7 +40,7 @@
 </div>
 <div class="row">
     <div ng-repeat="post in posts | filter : {title : search} | startFrom:currentPage*pageSize | limitTo:pageSize" class="col-sm-6 col-md-3" >
-        <div class="thumbnail" style="width: 190px; height: 300px;">
+        <div class="thumbnail" style=" height: 300px;">
             <div class="caption">
                 <h3><a ng-href="#/viewpost/{{post.id}}">{{post.title}}</a></h3>
                 <p>{{post.body|  limitTo : 60}}{{post.body.length > 60 ? '...' : ''}}</p>

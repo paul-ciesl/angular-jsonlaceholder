@@ -23,6 +23,15 @@ angular.module('angularZadanieApp')
       getComments: function (id) {
         return $http.get('http://jsonplaceholder.typicode.com/posts/'+id+
                 '/comments');
+      },
+      addPost: function (title, body) {
+          var data = {
+              userId : 1,
+              title : title,
+              body : body
+          };
+        return $http.post('http://jsonplaceholder.typicode.com/posts/',
+        data);
       }
     };
   }]);

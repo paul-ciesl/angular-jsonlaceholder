@@ -1,1 +1,39 @@
-<p>This is the addpost view.</p>
+<h1>Dodaj post</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form name="addPostForm" novalidate>
+            <div class="form-group" 
+                 ng-class="{ 'has-error' : addPostForm.name.$invalid && !addPostForm.name.$pristine }">
+                <label>Nazwa</label>
+                <input 
+                    type="text" 
+                    name="name" 
+                    class="form-control" 
+                    ng-model="name" 
+                    ng-pattern="/^[0-9a-zA-Z]+$/" required>
+                <p ng-show="addPostForm.name.$invalid && !addPostForm.name.$pristine" 
+                    class="help-block">Pole wymagane.</p>
+
+            </div>
+            <div class="form-group" 
+                 ng-class="{ 'has-error' : addPostForm.body.$invalid && !addPostForm.body.$pristine }">
+                <label>Treść</label>
+                <input 
+                    type="text" 
+                    name="body" 
+                    class="form-control" 
+                    ng-model="body" 
+                    required>
+                <p ng-show="addPostForm.body.$invalid && !addPostForm.body.$pristine" 
+                    class="help-block">Pole wymagane.</p>
+
+            </div>
+            <button 
+                ng-disabled="addPostForm.$invalid" 
+                ng-click="addPost()"
+                type="button" 
+                class="btn btn-primary">Wyślij</button>
+        </form>
+    </div>
+    
+</div>
