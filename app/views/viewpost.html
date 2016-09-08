@@ -1,1 +1,14 @@
-<p>This is the viewpost view.</p>
+<h1>{{post.title}}</h1>
+<p>{{post.body}}</p>
+<hr>
+<h4><b>{{user.name}} ({{user.username}})</b></h4>
+<h5>mail: {{user.email}}</h5>
+<h5>phone: {{user.phone}}</h5>
+<hr>
+<h3><b>Comments:</b></h3>
+<br>
+<div ng-repeat="comment in comments">
+    <h4><b>{{comment.name}}</b><p size="50" class="pull-right">{{comment.email}}</p></h4>
+    {{comment.body}}
+    <hr>
+</div>    

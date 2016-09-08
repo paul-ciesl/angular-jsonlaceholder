@@ -34,7 +34,7 @@ angular
         controller: 'AddpostCtrl',
         controllerAs: 'addpost'
       })
-      .when('/viewpost', {
+      .when('/viewpost/:postID', {
         templateUrl: 'views/viewpost.html',
         controller: 'ViewpostCtrl',
         controllerAs: 'viewpost'

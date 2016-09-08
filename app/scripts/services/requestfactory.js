@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc service
- * @name angularZadanieApp.requestFactory
+ * @name angularZadanieApp.requestFatory
  * @description
  * # requestFactory
  * Factory in the angularZadanieApp.
@@ -13,6 +13,16 @@ angular.module('angularZadanieApp')
     return {
       getPosts: function () {
         return $http.get('http://jsonplaceholder.typicode.com/posts');
+      },
+      getPost: function (id) {
+        return $http.get('http://jsonplaceholder.typicode.com/posts/'+id);
+      },
+      getUserData: function (id) {
+        return $http.get('http://jsonplaceholder.typicode.com/users/'+id);
+      },
+      getComments: function (id) {
+        return $http.get('http://jsonplaceholder.typicode.com/posts/'+id+
+                '/comments');
       }
     };
   }]);
