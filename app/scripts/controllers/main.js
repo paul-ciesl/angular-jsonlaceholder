@@ -8,15 +8,28 @@
  * Controller of the angularZadanieApp
  */
 angular.module('angularZadanieApp')
-        .controller('MainCtrl', ['requestFactory', '$scope',
-            function (requestFactory, $scope) {
+        .controller('MainCtrl', ['requestFactory', '$scope', '$timeout',
+            function (requestFactory, $scope, $timeout) {
                 $scope.currentPage = 0;
                 $scope.pageSize = 10;
-                $scope.numberOfPages = function () {
-                    return Math.ceil($scope.dataLength / $scope.pageSize);
+                $scope.updateView = function () { //wait for 'filtered' to be changed
+                    $scope.currentPage = 0;
+                    if ($scope.filtered !== undefined) {
+                      $scope.numberOfPages = Math.ceil($scope.filtered.length / $scope.pageSize);
+                    } else {
+                      $scope.numberOfPages = Math.ceil($scope.posts.length / $scope.pageSize);  
+                    }
                 };
+                
                 requestFactory.getPosts().success(function (responce) {
                     $scope.posts = responce;
-                    $scope.dataLength = $scope.posts.length;
+                    
+                }).then(function (){
+                    $scope.updateView();
                 });
+                                
+                $scope.filter = function () {
+                    $timeout($scope.updateView(), 10);
+                };
+                
             }]);
