@@ -11,7 +11,7 @@ angular.module('angularZadanieApp')
         .controller('MainCtrl', ['requestFactory', '$scope', '$timeout',
             function (requestFactory, $scope, $timeout) {
                 $scope.currentPage = 0;
-                $scope.pageSize = 10;
+                $scope.pageSize = "10";
                 $scope.updateView = function () { //wait for 'filtered' to be changed
                     $scope.currentPage = 0;
                     if ($scope.filtered !== undefined) {

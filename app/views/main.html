@@ -1,8 +1,6 @@
 <div class="row">
-    <div class="col-md-4">
-        <form 
-            name="searchForm" 
-        novalidate>
+    <div class="col-md-6">
+        <form name="searchForm" class="form-inline" novalidate>
 
             <!-- USERNAME -->
             <div class="form-group" 
@@ -19,10 +17,18 @@
                 <p ng-show="searchForm.search.$error.minlength" class="help-block">Fraza za krótka.</p>
                 <p ng-show="searchForm.search.$error.pattern" class="help-block">Tylko znaki alfanumeryczne.</p>
             </div>
-
+            <div class="form-group" >
+                
+                <select class="form-control"  ng-model="pageSize" ng-change="filter()">
+                  <option value="10">10</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                <label>Items on page</label>
+            </div>
         </form>
     </div>
-    <div class="col-md-8">    
+    <div class="col-md-6">    
         <a href="#/addpost" class="btn btn-primary pull-right">
             Dodaj post
         </a>
@@ -39,6 +45,7 @@
         Next
     </button>
 </div>
+<br>
 <div class="row">
     <div ng-repeat="post in filtered = ( posts | filter : {title : search}) | filter : {title : search} | startFrom:currentPage*pageSize | limitTo:pageSize" class="col-sm-6 col-md-3" >
         <div class="thumbnail" style=" height: 300px;">
